@@ -2,9 +2,6 @@ const { eq } = require('drizzle-orm');
 const { db } = require('../config/db');
 const { mahasiswa } = require('../models/schema');
 
-console.log('=== CONTROLLER DEBUG ===');
-console.log('db:', db);
-console.log('mahasiswa:', mahasiswa);
 
 async function getAllMahasiswa(req, res) {
   try {
