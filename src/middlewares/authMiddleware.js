@@ -1,12 +1,10 @@
-﻿const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 function verifyToken(req, res, next) {
   const authHeader = req.headers['authorization'];
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({
-      pesan: 'Token tidak ditemukan, akses ditolak'
-    });
+    return res.status(401).json({ pesan: 'Token tidak ditemukan, akses ditolak' });
   }
 
   const token = authHeader.split(' ')[1];
@@ -16,9 +14,7 @@ function verifyToken(req, res, next) {
     req.user = decoded;
     next();
   } catch (err) {
-    return res.status(403).json({
-      pesan: 'Token tidak valid atau sudah kedaluwarsa'
-    });
+    return res.status(403).json({ pesan: 'Token tidak valid atau sudah kedaluwarsa' });
   }
 }
 
